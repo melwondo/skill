@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -22,6 +23,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(message = "The email '{{ value }}' is not a valid email.")
      */
     private $email;
 
@@ -38,21 +40,37 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min= "2", max="10",
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false)
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min= "2", max="10",
+     *      minMessage = "Your last name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your last name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false)
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min= "5", max="20",
+     *      minMessage = "Your adress must be at least {{ limit }} characters long",
+     *      maxMessage = "Your adress name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false)
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min= "2", max="15",
+     *      minMessage = "Your city must be at least {{ limit }} characters long",
+     *      maxMessage = "Your city name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false)
      */
     private $city;
 
