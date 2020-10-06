@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="data:image/png;base64">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -34,14 +35,13 @@
                         <a class="btn btn-success btn-sm mr-3" href="{{ path('security_registration') }}" role="button">
                             Create an account
                         </a>
+                    {% elseif is_granted('ROLE_ADMIN') %}
+                        <a class="btn btn-success btn-sm mr-3" href="{{ path('admin') }}" role="button">
+                            Admin
+                        </a>
                     {% endif %}
                     <a class="d-inline mr-3" href="#">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bag" fill="currentColor"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5
-                            3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2
-                            5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z"/>
-                        </svg>
+                        <i class="fas fa-shopping-cart"></i>
                     </a>
                     <a class="d-inline mr-3"
                        href="
@@ -50,14 +50,7 @@
                             {% else %}
                             {{ path('app_login') }}
                             {% endif %}">
-                        <svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-person-circle"
-                             fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987
-                            6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
-                            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0
-                            8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
-                        </svg>
+                            <i class="fas fa-user-circle"></i>
                     </a>
                 </div>
             </nav>
