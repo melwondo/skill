@@ -9,7 +9,10 @@
 import '../css/app.scss';
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
-// import $ from 'jquery';
-const $ = require('jquery');
+import $ from 'jquery';
+// const $ = require('jquery');
 require('bootstrap');
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+
+$("#category_filter_name").on("change", function () {
+    $(this).parents('form').submit();
+});

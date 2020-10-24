@@ -29,9 +29,6 @@ class Category
      */
     private $products;
 
-    /**
-     * @return mixed
-     */
     public function __toString()
     {
         return $this->name;

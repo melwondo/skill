@@ -1,15 +1,1 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello HomeController!{% endblock %}
-
-{% block body %}
-    <div class="jumbotron text-center">
-        <h1 class="display-3">Hello, junior Dev!</h1>
-        <p class="lead">Find popular Skills to help you get the job you want.</p>
-        <hr class="my-2">
-        <p>Buy some skill help you to find the right skill you need for your next interview.</p>
-        <p class="lead">
-            <a class="btn btn-success btn-lg" href="#" role="button">Buy Some</a>
-        </p>
-    </div>
-{% endblock %}
+{% extends 'base.html.twig' %}{% block title %}Hello HomeController!{% endblock %}{% block body %}    <div class="jumbotron text-center">        <h1 class="display-3">Hello, junior Dev!</h1>        <p class="lead">Find popular Skills to help you get the job you want.</p>        <hr class="my-2">        <p>Buy some skill help you to find the right skill you need for your next interview.</p>    </div>    <div class="container">        <div class="row">            <div class="col-8">                <h3 class="text-success">Choice a category</h3>            </div>            <div class="col-4">                {{ form_start(filterForm) }}                    {{ form_row(filterForm.name) }}                {{ form_end(filterForm) }}            </div>        </div>    </div>    <div class="container mt-5">        {% if products is not empty %}            <h4>All {{ category.name }} product</h4>        {% endif %}        {% for product in products %}            <div class="card border-dark mb-3" style="max-width: 20rem;">                <div class="card-header">{{ product.title }}</div>                <div class="card-body">                    <h4 class="card-title"><img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="p"></h4>                    <p class="card-text">{{ product.description }}</p>                    <p class="text-success"><strong>{{ product.price }} e</strong></p>                    <button type="button" class="btn btn-outline-success">Add</button>                </div>            </div>        {% endfor %}    </div>{% endblock %}
