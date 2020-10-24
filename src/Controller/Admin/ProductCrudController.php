@@ -34,7 +34,7 @@ class ProductCrudController extends AbstractCrudController
         $date = DateTimeField::new('updateAt')->setFormat('short','short');
         $fields = [
             TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('description'),
             MoneyField::new('price')->setCurrency('EUR'),
             BooleanField::new('available'),
             AssociationField::new('category'),
